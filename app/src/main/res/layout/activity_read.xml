@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/dl_read_activity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/layout_read_title">
+
+        <TextView
+            android:textSize="10sp"
+            android:paddingTop="2dp"
+            android:textColor="@color/tomato"
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="20dp" />
+
+        <LinearLayout
+            android:id="@+id/layout_read"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <ImageView
+                android:id="@+id/tv_read"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:orientation="horizontal"
+            android:id="@+id/layout_read_foot">
+
+            <TextView
+                android:id="@+id/tv_foot"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:paddingLeft="10dp"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/tv_battery_value"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textSize="10sp" />
+
+                <com.tdkankan.ViewUitl.BatteryView
+                    android:id="@+id/tv_battery"
+                    android:layout_width="25dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--    抽屉布局子布局-->
+    <LinearLayout
+        android:id="@+id/layout_read_chapter_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="@color/default_read_color">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_book_chapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:text="【目录】"
+                android:textColor="@color/default_font_color"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_chapter_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="倒序"
+                android:textColor="@color/default_font_color"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listview_chapter_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/nothing"
+            android:fadingEdge="none"
+            android:listSelector="@color/nothing"
+            android:overScrollMode="never"
+            android:fadeScrollbars="true"
+            android:fastScrollEnabled="true"
+            android:focusable="true">
+
+        </ListView>
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

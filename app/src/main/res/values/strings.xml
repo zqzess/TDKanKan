@@ -1,0 +1,5 @@
+<resources>
+    <!--    <string name="app_name">TDkankan</string>-->
+    <string name="app_name">土豆看书</string>
+    <string name="img_contentDescription">书籍封面</string>
+</resources>

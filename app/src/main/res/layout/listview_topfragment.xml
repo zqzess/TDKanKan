@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--                两本书一行,水平布局-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!--                    第一本书-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <!--                        封面-->
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="80dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/img_topfragment_fengtui_1"/>
+            </LinearLayout>
+            <!--                            简介栏-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--                                书名作者栏-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:orientation="horizontal">
+                    <!--                               书名-->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:id="@+id/tv_topfragment_fengtui_name_1"/>
+                </LinearLayout>
+                <!--                            简介-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:textSize="12sp"
+                    android:id="@+id/tv_topfragment_fengtui_info_1"
+                    android:ellipsize="end"
+                    android:textColor="@color/DarkGray"/>
+                <!--                               作者-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:paddingLeft="5dp"
+                    android:gravity="right"
+                    android:textSize="13sp"
+                    android:id="@+id/tv_topfragment_fengtui_author_1"/>
+            </LinearLayout>
+        </LinearLayout>
+        <!--                    第二本书-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <!--                        封面-->
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="80dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/img_topfragment_fengtui_2"/>
+            </LinearLayout>
+            <!--                            简介栏-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--                                书名作者栏-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:orientation="horizontal">
+                    <!--                               书名-->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:id="@+id/tv_topfragment_fengtui_name_2"/>
+                </LinearLayout>
+                <!--                            简介-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:textSize="12sp"
+                    android:id="@+id/tv_topfragment_fengtui_info_2"
+                    android:ellipsize="end"
+                    android:textColor="@color/DarkGray"/>
+                <!--                               作者-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:paddingLeft="5dp"
+                    android:gravity="right"
+                    android:textSize="13sp"
+                    android:id="@+id/tv_topfragment_fengtui_author_2"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
