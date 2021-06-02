@@ -12,6 +12,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import java.io.File;
+
 /**
  * @author ZQZESS
  * @date 2021/6/3.
@@ -42,6 +44,11 @@ public class DownloadService extends IntentService {
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
 
         //指定APK缓存路径和应用名称，可在SD卡/Android/data/包名/file/Download文件夹中查看
+        File file = new File(this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "TDkankan.apk");
+        if(file.exists()&& file.isFile())
+        {
+            file.delete();
+        }
         request.setDestinationInExternalFilesDir(this, Environment.DIRECTORY_DOWNLOADS, "TDkankan.apk");
         // 设置允许使用的网络类型，这里是移动网络和wifi都可以
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE

@@ -3,6 +3,7 @@ package com.tdkankan.UI;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -13,6 +14,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -160,14 +162,33 @@ public class SettingFragment extends Fragment {
         public void onReceive(Context context, Intent intent) {
             String data = intent.getStringExtra(DownloadService.EXTENDED_DATA_STATUS);
 //            Log.i("test", data);
-
             long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
 //            Toast.makeText(context, "编号："+id+"的下载任务已经完成！", Toast.LENGTH_SHORT).show();
-            intent = new Intent(Intent.ACTION_VIEW);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.setDataAndType(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/TDkankan.apk")),
-                    "application/vnd.android.package-archive");
-            startActivity(intent);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "TDkankan.apk");
+//                Uri apkUri = FileProvider.getUriForFile(context,
+//                        "com.tdkankan.FileProvider", new File(Environment.getExternalStorageDirectory() + "/TDkankan.apk"));
+                Uri apkUri = FileProvider.getUriForFile(context, "com.tdkankan.FileProvider", file);
+                Intent install = new Intent(Intent.ACTION_VIEW);
+                install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //添加这一句表示对目标应用临时授权该Uri所代表的文件
+                install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                install.setDataAndType(apkUri, "application/vnd.android.package-archive");
+                context.startActivity(install);
+
+            } else {
+                Intent install = new Intent(Intent.ACTION_VIEW);
+//                install.setDataAndType(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/TDkankan.apk")), "application/vnd.android.package-archive");
+                intent.setDataAndType(Uri.fromFile(new File(Environment.DIRECTORY_DOWNLOADS, "TDkankan.apk")), "application/vnd.android.package-archive");
+                install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(install);
+            }
+//            intent = new Intent(Intent.ACTION_VIEW);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            intent.setDataAndType(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/TDkankan.apk")),
+//                    "application/vnd.android.package-archive");
+//            startActivity(intent);
 
         }
     }
