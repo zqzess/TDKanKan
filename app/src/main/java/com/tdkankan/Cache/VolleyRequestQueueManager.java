@@ -20,7 +20,6 @@ public class VolleyRequestQueueManager {
      */
     // 获取请求队列类
     public static RequestQueue mRequestQueue = Volley.newRequestQueue(MyApplication.newInstance());
-
     //添加任务进任务队列
     public static void addRequest(Request<?> request, Object tag) {
         if (tag != null) {

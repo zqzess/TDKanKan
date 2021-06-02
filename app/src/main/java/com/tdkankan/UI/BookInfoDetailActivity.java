@@ -102,9 +102,13 @@ public class BookInfoDetailActivity extends AppCompatActivity {
                         Toast.makeText(BookInfoDetailActivity.this,"添加成功",Toast.LENGTH_SHORT).show();
                         btn_add.setText("移出书架");
                     }
-                }else
+                }else if(btn_add.getText().toString().equals("移出书架"))
                 {//移出书架
-
+                    mDb.delete(mDb.search(link).getBookid());
+                    if(mDb.search(link)==null)
+                    {
+                        btn_add.setText("加入书架");
+                    }
                 }
             }
         });

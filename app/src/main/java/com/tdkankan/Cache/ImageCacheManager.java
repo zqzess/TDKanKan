@@ -5,8 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
+import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
 import com.tdkankan.ViewUitl.BookItemTypeTwo;
 
 /**
@@ -26,7 +28,6 @@ public class ImageCacheManager {
     private static ImageLoader.ImageCache mImageCache = new ImageCacheUtil();
     // 获取ImageLoader对象
     public static ImageLoader mImageLoader = new ImageLoader(VolleyRequestQueueManager.mRequestQueue, mImageCache);
-
 
     /**
      * 获取ImageListener

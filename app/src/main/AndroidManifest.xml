@@ -39,6 +39,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <service
+            android:name=".Service.DownloadService"
+            android:enabled="true"
+            >
+        </service>
     </application>
 
 </manifest>
