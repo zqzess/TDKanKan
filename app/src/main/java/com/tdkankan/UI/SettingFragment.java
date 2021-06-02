@@ -99,7 +99,13 @@ public class SettingFragment extends Fragment {
                                             downurl=object.getString("browser_download_url");
 //                                            Log.d("downurl",verName+"->"+downurl);
                                             loadingDialog.dismiss();
-                                            UpdateTipDialog(context,verName,downurl,updateinfo);
+                                            if (verName.equals(versionName))
+                                            {
+                                                Toast.makeText(context,"当前已是最新版本",Toast.LENGTH_SHORT).show();
+                                            }else
+                                            {
+                                                UpdateTipDialog(context,verName,downurl,updateinfo);
+                                            }
                                         }
                                     }
                             } catch (JSONException e) {
@@ -122,7 +128,7 @@ public class SettingFragment extends Fragment {
     {
         mDialog = new AlertDialog.Builder(context);
         mDialog.setTitle("土豆阅读又更新咯！");
-        mDialog.setMessage(updateinfo);
+        mDialog.setMessage("最新版本:"+verName+"\n"+updateinfo);
         mDialog.setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -156,7 +162,7 @@ public class SettingFragment extends Fragment {
 //            Log.i("test", data);
 
             long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
-            Toast.makeText(context, "编号："+id+"的下载任务已经完成！", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "编号："+id+"的下载任务已经完成！", Toast.LENGTH_SHORT).show();
             intent = new Intent(Intent.ACTION_VIEW);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setDataAndType(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/TDkankan.apk")),
