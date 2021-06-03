@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
@@ -54,11 +55,21 @@ public class DownloadService extends IntentService {
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE
                 | DownloadManager.Request.NETWORK_WIFI);
         //设置显示通知栏，下载完成后通知栏自动消失
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+//        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB) {
+//            //request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+//            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+//        }
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        }else
+        {
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            request.setVisibleInDownloadsUi(true);
+        }
         // 显示下载界面
-        request.setVisibleInDownloadsUi(true);
+//        request.setVisibleInDownloadsUi(true);
         //设置通知栏标题
-        request.setTitle("下载");
+        request.setTitle("土豆看书下载");
         request.setDescription("应用正在下载");
         request.setAllowedOverRoaming(false);
         //获得唯一下载id
