@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 往sdcard中写入数据的权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 8.0手机安装软件 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <!-- 允许装载和卸载文件系统权限 -->
@@ -28,6 +29,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
         android:name=".MyApplication">
         <activity android:name=".UI.SearchActivity"></activity>
         <activity android:name=".UI.ReadingActivity" />
